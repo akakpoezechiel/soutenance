@@ -1,0 +1,584 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('fonts/custom-font.woff2') format('woff2'),
+         url('fonts/custom-font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'CustomFont', sans-serif;
+    overflow-x: hidden;
+    padding: 0;
+    margin: auto;
+}
+
+.first{
+    width: 100vw;
+    /* height: 100vh; */
+    /* border: solid red; */
+    /* border: solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.test{
+    /* background-color: red; */
+    height: max-content;
+}
+.nav div{
+    height: 10vh;
+    
+    padding: 10px;
+   
+}
+
+.nav{
+  
+    width:100%;
+    border: solid black 1.5px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    
+    gap: 50%; 
+   
+   
+}
+#kabaa{
+    font-size: 2rem;
+    font-size: bold;
+}
+.nav a{
+    text-decoration: none;
+    color: #1D5F4C;
+}
+
+.buttons{
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+    padding-right: 20px;
+    align-items: center;
+    height: 10vh;
+    width: 99.5vw;
+    border: solid black 1.5px;
+}
+
+.buttons div{
+    margin-right: 60px;
+}
+.télécharger{
+    height: 40px;
+    width: 150px;
+    background-color: white;
+    border: solid black 0.5px;
+}
+.télécharger a{
+    text-decoration: none;
+    color: black;
+}
+.connexion{
+    height: 40px;
+    width: 150px;
+    background-color:#1D5F4C;
+    border: solid black 0.5px;
+    
+    font-size: bold;
+}
+.connexion a{
+    text-decoration: none;
+    color: white;
+}
+
+.acceuil{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center;
+    color: white; */
+}
+.accueilimg{
+    height: 80vh;
+    width: 100vw;
+    object-fit: cover;
+    background-image: url('../image/hamburger-4095156_640.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    padding-left: 50px;
+}
+
+.accueilimg div{
+    background-color: rgba(0, 0, 0, 0.674);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 70px;
+    width: 70vh;
+    padding-left: 5px;
+    border: solid rgba(255, 255, 255, 0.137) 0.1px;
+    border-radius: 10px;
+}
+.accueilimg input{
+    width: 250px;
+    height: 35px;
+
+}
+.middle{
+    /* height: 100vh; */
+    width: 90%;
+    margin: auto;
+    /* border: solid red; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* border: solid black; */
+    gap: 30px;
+    
+    
+   
+}
+.bgGreen{
+    background-color: #1D5F4C;
+    width: 60vw;
+    /* height: 20vh; */
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    /* align-items: center; */
+    color: white;
+    margin-top: 50px;
+    border-radius: 5px;
+    font-size: 2.5rem;
+    
+}
+.bgGreen img{
+    height: 150px;
+}
+.card{
+    display: flex;
+    gap: 60px;
+    width: 80vw;
+    height: 52vh;
+    justify-content: center;
+    align-items: center;
+    border: solid black 0.1px;
+    margin-top: 5%;
+    box-shadow:  0 0 10px  rgba(0, 0, 0, 0.492);
+    padding: 0 20px 0 20px;
+    overflow-x: scroll;
+    /* scrollbar-width: none; */
+    
+}
+.pizzeria{
+    width: 15vw;
+    height: 400px;
+    border: solid rgba(0, 0, 0, 0.493) 0.5px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.pizzeria .pizzeriaText{
+    padding: 10px;
+}
+.pizzeria img{
+    width: 100%;
+    height: 150px;
+}
+.divreduction{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.reduction{
+    height: 40px;
+    width: 200px;
+    background-color: #1D5F4C;
+    color: white;
+    border-radius: 5px;
+    margin-top: -6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.about{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    padding: 0 20px;
+    /* border: solid black 0.5px; */
+    border-radius: 2%;
+}
+
+.inscrirerestoImg{
+    width: 40%;
+    height: 100%;
+   
+}
+.inscrirerestoImg img{
+    height: 100%;
+    width: 100%;
+}
+.inscrirerestotext{
+    width: 60%;
+    height: 100%;
+    border: solid 0.5px #0000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inscrirerestotext button{
+    background-color: #1D5F4C;
+    height: 30px;
+    width: 200px;
+}
+.inscrirerestotext button a{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+.footer{
+    width: 98vw;
+    height: 300px;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.451);
+    padding: 10px;
+    gap: 20px;
+}
+.footer div{
+    /* background-color: blue; */
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 10px;
+}
+.footer div a{
+    text-decoration: none;
+    color: white;
+
+}
+
+
+.footer div a img{
+    height: 80px;
+    width: 200px;
+}
+.container{
+    height: 100%;
+    width: 96%;
+    gap: 10%;
+    /* border: solid blue; */
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    margin-top: 2%;
+}
+.restoblock{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+   
+
+
+}
+
+.restoblock span{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+ 
+.container .restoblock .para{
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+
+
+.container div img{
+    width: 100%;
+    height:95%;
+}
+.promotion{
+    /* width: 500px; */
+    background-color: #1D5F4C;
+    /* margin: 0 0 10px 60px; */
+    height: 30px;
+    color: white;
+    border-radius: 50px;
+}
+/* .promotion p{
+    text-align: center;
+    font-size: 0.8rem;
+    text-align: center;
+
+} */
+.paragraph{
+width: 100%;
+background-color: #1D5F4C;
+text-align: left;
+}
+
+.containerInput{
+    width: 45%;
+    background-color: rgba(0, 0, 0, 0.451);
+    height: 80vh;
+    color: black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+}
+.inputResto{
+    width: 80%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border: solid black;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.inputResto input{
+    width: 70%;
+    height: 8.5%;
+    border-radius: 5px;
+}
+.rowInput{
+    display: flex;
+    gap: 10px;
+}
+#shortInput{
+    height:35px ;
+    width: 150px;
+}
+.shortDiv{
+    display: flex;
+    flex-direction: column;
+}
+.containerInput a{
+    text-decoration: none;
+    color:blue;
+    font-size: 1.5rem;
+    
+}
+.singupText{
+    width: 60%;
+    display: flex;
+    justify-content: left;
+    justify-content: center;
+}
+.singupText p{
+    font-size: 1.2rem;
+}
+.singupText img{
+    margin-left: 40%;
+}
+.singupText span{
+    font-weight: bold;
+
+}
+
+.visibilité{
+width: 15%;
+height: 320px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+.visibilité p{
+    text-align: center;
+}
+.visibilité h3{
+    text-align: center;
+}
+
+.visibilité img{
+    height: 50px;
+    width: 50px;
+}
+
+.kabaapub{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.publicitimg{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    background-image: url('../image/go.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0.5);
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(243, 110, 110);
+   
+
+}
+.publicitimg div{
+    width: 100%;
+    
+}
+.publicitimg marquee{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    font-size: 4rem;
+}
+.publicité{
+    width: 400px;
+    height: 150px;
+    border: solid #1D5F4C 0.5px;
+    color: #1D5F4C;
+    font-size:2rem;
+    border-radius: 0 0 10px 10px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.publicitéContent{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.pizzeria1{
+    height: 400px;
+    border: solid red;
+    width: 300px;
+}
+
+.menu__card
+{
+ border: solid black 0.5px;
+}
+
+.menu__card a 
+{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+@media (min-width: 1024px) {
+    .publicitimg {
+        height: 100vh;
+        width: 100vw;
+        object-fit: cover;
+        background-position: center;
+        background-size: cover;
+        filter: brightness(0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(243, 110, 110);
+    }
+
+    .buttons {
+        width: 100vw;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+
+    }
+
+    .pizzeria {
+        width: 20vw;
+    }
+
+    #chef{
+        margin-left: -20px;
+    }
+    #chef2{
+        margin-left: 20px;
+    }
+}
+
+/* Pour les tablettes */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .publicitimg {
+        height: 80vh;
+        background-size: cover;
+    }
+
+    .bgGreen {
+        width: 70vw;
+    }
+
+    .pizzeria {
+        width: 25vw;
+    }
+
+    .buttons {
+        width: 85vw;
+    }
+}
+
+/* Pour les téléphones */
+@media (max-width: 768px) {
+    .publicitimg {
+        height: 60vh;
+        background-size: cover;
+        filter: brightness(0.7); /* Un peu plus sombre pour plus de lisibilité */
+    }
+
+    .publicitimg marquee {
+        font-size: 2rem;
+    }
+
+    .pizzeria {
+        width: 90vw;
+        height: auto;
+    }
+
+    .buttons {
+        width: 100vw;
+        justify-content: space-between;
+        padding-right: 10px;
+    }
+
+    .bgGreen {
+        width: 90vw;
+        height: auto;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer div {
+        width: 100%;
+    }
+
+    .card {
+        flex-direction: column;
+        width: 90vw;
+        height: auto;
+    }
+}
+
