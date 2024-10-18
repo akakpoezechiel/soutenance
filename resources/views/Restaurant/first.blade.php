@@ -187,6 +187,30 @@
                 @endforeach
             </div>
 
+
+            //export
+            
+            {{-- @foreach ($products as $product)
+            <div class="box">
+                <p class="date"> {{ $product->price }} <i>fcfa</i> </p>
+                <div class="img-box">
+                    {{-- <img src="./image/salad-with-salad-with-eggs-cucumber-cucumber_1034052-104252.Avif" alt=""> --}}
+                    {{-- <img src="{{ asset('db/' . $product->image) }}" alt="{{ $product->nom }} style " />
+
+                </div> --}} --
+                {{-- <div class="detail">
+                    <h1>{!! $product->name !!} <br><span><h4>{!! $product->short_description !!}</h4></span></h1>
+                    <p>
+                        <h4>{!! $product->long_description !!}</h4>
+
+                    </p>
+                    <a href="#shop" class="btn">Passer la commande</a>
+                </div>
+            </div>
+            @endforeach --}}
+
+            //export
+
             <!-- Pagination (optionnel si tu as configuré la pagination dans Swiper) -->
             <div class="swiper-pagination"></div>
             {{-- </div> --}}

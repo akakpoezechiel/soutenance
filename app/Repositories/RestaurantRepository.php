@@ -6,6 +6,7 @@ use App\Interfaces\RestaurantInterface;
 use App\Mail\Resto_Id_Email;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class RestaurantRepository implements RestaurantInterface
@@ -20,6 +21,25 @@ class RestaurantRepository implements RestaurantInterface
 
     public function create(array $data)
     {
+
+
+                
+        $user = DB::table('users')
+        ->where('id', Auth::id()) // Récupérer l'utilisateur connecté
+        ->first();
+
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Vous devez être connecté pour créer un restaurant.');
+        }
+
+        // Récupération de l'utilisateur connecté
+        $user = Auth::user();
+
+        // Vérification si l'utilisateur est un administrateur
+        if (!$user->is_admin) { // Supposant que 'is_admin' est un champ booléen dans la table 'users'
+            return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à créer un restaurant.');
+        }
+
         $filtrFirstname = substr($data['prenom'], 0, 2);
         $filtrLastname = substr($data['nom'], 0, 2);
         $filtrRestoName1 = substr($data['nom_restaurant'], 0, 1);
@@ -58,4 +78,11 @@ class RestaurantRepository implements RestaurantInterface
         return $createRest;
 
     }
+
+
+    
+    //
+
+    
+
 }

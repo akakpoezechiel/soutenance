@@ -2,9 +2,8 @@
     <table width="100%">
         <tr>
             <td>
-                <a href="{{ route('home') }}">
-                    <b>Home</b>
-                </a>
+                <button onclick="goBack()" style="background-color: rgb(25, 120, 179)">Retour</button>
+
             </td>
             <td class="text-right">
                 <a href="{{ route('auth.create') }}">
@@ -13,4 +12,11 @@
             </td>
         </tr>
     </table>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
 </header>

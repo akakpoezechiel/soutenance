@@ -39,13 +39,14 @@ class AuthController extends Controller
 
         $user_id = session()->get("user_id");
 
-        return view('users.edit',[
+        return view('users.edit', [
             "page" => 'users.edit',
             "users" => $data,
             "user_id" => $user_id
         ]);
     }
-    public function logine(){
+    public function logine()
+    {
         return view('welcome');
     }
 
@@ -57,7 +58,8 @@ class AuthController extends Controller
         $data = [
             "username" => $request->username,
             "email" => $request->email,
-            "password" => Hash::make($request->password)
+            "password" => Hash::make($request->password),
+            "is_admin" => 1,
         ];
 
         DB::beginTransaction();
@@ -70,47 +72,46 @@ class AuthController extends Controller
         } catch (\Throwable $th) {
             return ResponseClass::rollback();
         }
-
     }
 
-    public function login(Request $request) {
+    public function login(Request $request)
+{
+    // Récupérer les informations de connexion (email et mot de passe)
+    $credentials = $request->only('email', 'password');
 
-        $credentials = $request->only('email', 'password');
+    // Trouver l'utilisateur par email
+    $user = User::where("email", $request->email)->first();
 
-        $user = User::where("email", $request->email)->first();
-
-        $checkIfAdmin = User::where("email", $request->email)
-                                ->where("is_admin", true)
-                                ->first();
-
-        if (!$user) {
-            return back()->withErrors([
-                'email' => 'Les informations d\'identification fournies sont incorrectes.',
-            ])->onlyInput('email');
-        }
-
-        try {
-            if (Hash::check($request->password, $user->password)) {
-                $request->session()->put("user_id", $user->id);
-                // if ($checkIfAdmin) {
-                // } else {
-                //     return redirect()->route('authentication');
-                // }
-                return redirect()->intended('home');
-            }else {
-                return back()->withErrors([
-                    'email' => 'Les informations d\'identification fournies sont incorrectes.',
-                ])->onlyInput('email');
-            }
-        } catch (\Throwable $th) {
-            return back()->withErrors([
-                'email' => 'Les informations d\'identification fournies sont incorrectes.',
-            ])->onlyInput('email');
-        }
-
+    // Vérifier si l'utilisateur existe
+    if (!$user) {
+        return back()->withErrors([
+            'email' => 'Les informations d\'identification fournies sont incorrectes.',
+        ])->onlyInput('email');
     }
 
-    public function logout() {
+    // Vérifier si le mot de passe est correct
+    if (!Hash::check($request->password, $user->password)) {
+        return back()->withErrors([
+            'password' => 'Le mot de passe est incorrect.',
+        ])->onlyInput('password');
+    }
+
+    // Stocker l'ID de l'utilisateur dans la session
+    $request->session()->put("user_id", $user->id);
+
+    // Vérifier si c'est un administrateur
+    if ($user->is_admin) {
+        // Rediriger l'administrateur vers le dashboard
+        return redirect()->route('home');
+    } else {
+        // Rediriger les utilisateurs simples vers la page 'first'
+        return redirect()->route('first');
+    }
+}
+
+
+    public function logout()
+    {
         session()->forget("user_id");
         return redirect()->route('authentication');
     }
@@ -118,10 +119,7 @@ class AuthController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
-    {
-
-    }
+    public function show() {}
 
     /**
      * Show the form for editing the specified resource.
@@ -141,16 +139,16 @@ class AuthController extends Controller
         ];
 
         if (!empty($request->password)) {
-            if($request->password == $request->confirmation) {
+            if ($request->password == $request->confirmation) {
                 $data['password'] = Hash::make($request->password);
-            }else {
+            } else {
                 return back()->withErrors([
                     'email' => 'Les deux mots de passe ne sont pas identiques.',
                 ])->onlyInput('password');
             }
         }
 
-        DB::beginTransaction(); 
+        DB::beginTransaction();
 
         try {
             $this->authInterface->update($data, $id);
@@ -170,4 +168,3 @@ class AuthController extends Controller
         //
     }
 }
-    

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\acceuilController;
+use App\Http\Controllers\admin\UserManagementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChartController;
@@ -67,5 +68,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/signup', [SignRestoController::class, 'index'])->name('signup');
 
     Route::get('/restaurant', [RestaurantPageController::class, 'index'])->name('restaurantPage');
-!    Route::get('/restaurant/passCommand', action: [RestaurantPageController::class, 'show'])->name('passCommand');
+   Route::get('/restaurant/passCommand', action: [RestaurantPageController::class, 'show'])->name('passCommand');
+
+   Route::middleware(['auth', 'is_admin'])->group(function () {});
+
+   ///
+    Route::get('/admin', [UserManagementController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/userCreate', [UserManagementController::class, 'create'])->name('admin.users.create');
+    Route::post('/admin/users/store', [UserManagementController::class, 'store'])->name('admin.users.store');
+    Route::get('/userEdit/{id}', [UserManagementController::class, 'edit'])->name('admin.users.edit');
+    Route::delete('/userDestroy/{id}', [UserManagementController::class, 'destroy'])->name('admin.users.destroy');
+    Route::put('/userUpdate/{id}', [UserManagementController::class, 'update'])->name('admin.users.update');
+    Route::get('/admin/users', [UserManagementController::class, 'index'])->name('admin.users.index');
+
+    // Route::resource('admin/users', UserManagementController::class);
+
     

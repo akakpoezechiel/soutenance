@@ -19,4 +19,10 @@ class Restaurant extends Model
         'identifiant_de_connexion',
         'mot_de_passe'
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

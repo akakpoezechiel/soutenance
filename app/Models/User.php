@@ -18,6 +18,13 @@ class User extends Model
         'name',
         'username',
         'email',
-        'password'
+        'password',
+        'is_admin',
     ];
+
+
+    public function restaurants()
+    {
+        return $this->hasMany(Restaurant::class);
+    }
 }
