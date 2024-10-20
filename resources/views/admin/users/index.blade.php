@@ -7,6 +7,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .btn-primary {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+    </style>
+
+
     <title>Document</title>
 </head>
 
@@ -15,6 +40,10 @@
 
     <div class="container">
         <h1>Liste des utilisateurs</h1>
+
+        <button onclick="goBack()" style="background-color: rgb(25, 120, 179)">Retour</button>
+
+
         <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Ajouter un utilisateur</a>
 
         @if (session('success'))
@@ -58,5 +87,12 @@
     </div>
 
 </body>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
 </html>

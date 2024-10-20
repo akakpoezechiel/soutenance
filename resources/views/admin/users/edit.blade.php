@@ -6,12 +6,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-control, .form-check-input {
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+
     <title>Document</title>
 </head>
 <body>
 
     <div class="container">
         <h1>Modifier l'utilisateur</h1>
+
+        <button onclick="goBack()" style="background-color: rgb(25, 120, 179)">Retour</button>
+
 
         <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
             @csrf
@@ -40,6 +65,12 @@
             <button type="submit" class="btn btn-primary">Mettre à jour</button>
         </form>
     </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
     
 </body>
 </html>

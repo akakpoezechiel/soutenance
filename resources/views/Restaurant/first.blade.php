@@ -52,6 +52,8 @@
                         <a href=""> l'application</a>
                     </button>
                     <button class="connexion"><a href="{{ route('authentication') }}">Connexion</a></button>
+                    <a href="/admin"><img src="./image/setting-removebg-preview.png" alt=""; style="height: 20px; width: 20px;" >
+                    </a>
                 </div>
             </div>
             <div class="accueilimg">
