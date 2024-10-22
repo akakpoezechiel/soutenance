@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Users\CreateUserRequest;
 use App\Interfaces\AuthInterface;
+use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -77,36 +78,121 @@ class AuthController extends Controller
     public function login(Request $request)
 {
     // Récupérer les informations de connexion (email et mot de passe)
-    $credentials = $request->only('email', 'password');
+    // $credentials = $request->only('email', 'password');
 
-    // Trouver l'utilisateur par email
-    $user = User::where("email", $request->email)->first();
+    // // Trouver l'utilisateur par email
+    // $user = User::where("email", $request->email)->first();
 
-    // Vérifier si l'utilisateur existe
-    if (!$user) {
-        return back()->withErrors([
-            'email' => 'Les informations d\'identification fournies sont incorrectes.',
-        ])->onlyInput('email');
-    }
+    // // Vérifier si l'utilisateur existe
+    // if (!$user) {
+    //     return back()->withErrors([
+    //         'email' => 'Les informations d\'identification fournies sont incorrectes.',
+    //     ])->onlyInput('email');
+    // }
 
-    // Vérifier si le mot de passe est correct
-    if (!Hash::check($request->password, $user->password)) {
-        return back()->withErrors([
-            'password' => 'Le mot de passe est incorrect.',
-        ])->onlyInput('password');
-    }
+    // // Vérifier si le mot de passe est correct
+    // if (!Hash::check($request->password, $user->password)) {
+    //     return back()->withErrors([
+    //         'password' => 'Le mot de passe est incorrect.',
+    //     ])->onlyInput('password');
+    // }
 
-    // Stocker l'ID de l'utilisateur dans la session
-    $request->session()->put("user_id", $user->id);
+    // // Stocker l'ID de l'utilisateur dans la session
+    // $request->session()->put("user_id", $user->id);
 
-    // Vérifier si c'est un administrateur
-    if ($user->is_admin) {
-        // Rediriger l'administrateur vers le dashboard
-        return redirect()->route('home');
-    } else {
-        // Rediriger les utilisateurs simples vers la page 'first'
-        return redirect()->route('first');
-    }
+    // // Vérifier si c'est un administrateur
+    // if ($user->is_admin) {
+    //     // Rediriger l'administrateur vers le dashboard
+    //     return redirect()->route('home');
+    // } else {
+    //     // Rediriger les utilisateurs simples vers la page 'first'
+    //     return redirect()->route('first');
+    // }
+
+    // $credentials = $request->only('email', 'password');
+
+    // // Trouver l'utilisateur par email
+    // $user = User::where("email", $request->email)->first();
+
+    // // Vérifier si l'utilisateur existe
+    // if (!$user) {
+    //     return back()->withErrors([
+    //         'email' => 'Les informations d\'identification fournies sont incorrectes.',
+    //     ])->onlyInput('email');
+    // }
+
+    // // Vérifier si le mot de passe est correct
+    // if (!Hash::check($request->password, $user->password)) {
+    //     return back()->withErrors([
+    //         'password' => 'Le mot de passe est incorrect.',
+    //     ])->onlyInput('password');
+    // }
+
+    // // Stocker l'ID de l'utilisateur dans la session
+    // $request->session()->put("user_id", $user->id);
+
+    // // Vérifier si c'est un administrateur
+    // if ($user->is_admin) {
+    //     // Récupérer le restaurant de l'administrateur en utilisant l'email
+    //     $restaurant = Restaurant::where('user_id', $user->id)->first();
+
+    //     if ($restaurant) {
+    //         // Rediriger vers le dashboard spécifique du restaurant
+    //         return redirect()->route('admin.dashboard', ['restaurant' => $restaurant->id]);
+    //     } else {
+    //         // Si l'administrateur n'a pas encore créé de restaurant, rediriger vers une page de création
+    //         return redirect()->route('admin.create.restaurant');
+    //     }
+    // } else {
+    //     // Rediriger les utilisateurs simples vers la page 'first'
+    //     return redirect()->route('first');
+    // }
+
+
+    // Récupérer les informations de connexion (email et mot de passe)
+   // Récupérer les informations de connexion (email et mot de passe)
+   $credentials = $request->only('email', 'password');
+
+   // Trouver l'utilisateur par email
+   $user = User::where("email", $request->email)->first();
+
+   // Vérifier si l'utilisateur existe
+   if (!$user) {
+       return back()->withErrors([
+           'email' => 'Les informations d\'identification fournies sont incorrectes.',
+       ])->onlyInput('email');
+   }
+
+   // Vérifier si le mot de passe est correct
+   if (!Hash::check($request->password, $user->password)) {
+       return back()->withErrors([
+           'password' => 'Le mot de passe est incorrect.',
+       ])->onlyInput('password');
+   }
+
+   // Stocker l'ID de l'utilisateur dans la session
+   $request->session()->put("user_id", $user->id);
+
+   // Vérifier si c'est un administrateur
+   if ($user->is_admin) {
+       // Récupérer le restaurant de l'administrateur en utilisant l'email
+       $restaurant = Restaurant::where('user_id', $user->id)->first();
+
+       if ($restaurant) {
+           // Rediriger vers le dashboard spécifique du restaurant
+           return redirect()->route('home', ['restaurant' => $restaurant->id]);
+       } else {
+           // Si l'administrateur n'a pas encore créé de restaurant, rediriger vers une page de création
+           return redirect()->route('signup');
+       }
+   } elseif ($user->technicien) {
+       // Rediriger le technicien vers son dashboard
+       return redirect()->route('admin.dashboard');
+   } else {
+       // Rediriger les utilisateurs simples vers la page 'first'
+       return redirect()->route('first');
+   }
+
 }
 
 
