@@ -14,14 +14,13 @@ return new class extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->string('nom_restaurant');
-            $table->string('adresse_restaurant');
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('adresse');
+            $table->string('adresse_maps');
             $table->string('numero_telephone');
-            $table->string('identifiant_de_connexion');
-            $table->string('mot_de_passe');
-            $table->unsignedBigInteger('user_id');
+            $table->string('email')->unique();
+            $table->string('nom_proprietaire');
+            // $table->string('prenom_proprietaire');
+            $table->unsignedBigInteger('user_id')->nullable();
+
             $table->timestamps();
 
 
@@ -34,8 +33,12 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('restaurants');
+        Schema::table('restaurants', function (Blueprint $table) {
+            // Supprimer la clé étrangère et la colonne
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
+        });
     }
 };

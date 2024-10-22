@@ -56,7 +56,8 @@
             </div>
             <div class="rondImg">
 
-                <img src="../image/bugger.jpg" alt="" id="rondImg">
+                <img src="{{ URL::asset('db/' . $product->image, ) }}" alt="" id="rondImg">
+                <p id="{{ URL::asset('db/' . $product->price, ) }}" ></p>
 
             </div>
             
@@ -70,7 +71,26 @@
             angle += 1;
             img.style.transform = `rotate(${angle}deg)`;
         }, 60);
+
     </script>
+
+    <SCript>
+
+function showOrderSummary(imageUrl, price) 
+        // Récupérer les éléments HTML où afficher l'image et le prix
+        const orderSummaryDiv = document.getElementByClass('rondImg');
+        const orderImage = document.getElementById('rondImg');
+        const orderPrice = document.getElementById('order-price');
+
+        // Mettre à jour l'image et le prix
+        orderImage.src = imageUrl;
+        orderPrice.textContent = "Prix: " + price + " fcfa";
+
+        // Afficher la div avec le résumé de la commande
+        orderSummaryDiv.style.display = 'block';
+
+
+    </SCript>
     
 </body>
 </html>

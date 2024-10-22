@@ -64,11 +64,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/restaurant/sign_up', [SignRestoController::class, 'store'])->name('restaurant.store');
     
     Route::get('/restaurant/sign_up', [SignRestoController::class, 'success']);
-
+    //pour créer des restaurants
     Route::get('/signup', [SignRestoController::class, 'index'])->name('signup');
 
     Route::get('/restaurant', [RestaurantPageController::class, 'index'])->name('restaurantPage');
-   Route::get('/restaurant/passCommand', action: [RestaurantPageController::class, 'show'])->name('passCommand');
+   Route::get('/restaurant/passCommand/{product}', action: [RestaurantPageController::class, 'show'])->name('passCommand');
 
    Route::middleware(['auth', 'is_admin'])->group(function () {});
 

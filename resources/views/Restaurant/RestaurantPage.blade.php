@@ -89,8 +89,9 @@
                         <h4>{!! $product->long_description !!}</h4>
 
                     </p>
-                    <a href="#shop" class="btn">Passer la commande</a>
-                </div>
+                    <a href="{{ route('passCommand', $product->id) }}" class="btn"
+                    onclick="showOrderSummary('{{ asset('db/' . $product->image) }}', '{{ $product->price }}')">Passer
+                    la commande</a>                </div>
             </div>
             @endforeach
             {{-- <div class="box">

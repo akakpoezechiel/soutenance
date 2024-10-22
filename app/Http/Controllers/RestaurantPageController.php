@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\ProductInterface;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class RestaurantPageController extends Controller
@@ -25,8 +26,11 @@ class RestaurantPageController extends Controller
     );
     }
 
-    public function show()
+    public function show(string $id) 
     {
-        return view('Restaurant.passCommand');
+        $product = Product::findOrFail($id);
+        return view('Restaurant.passCommand', [
+            'product' => $product
+        ]);
     }
 }

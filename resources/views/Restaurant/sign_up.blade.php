@@ -75,7 +75,7 @@
             </div>
 
             <div class="containerInput">
-                <form action="{{ route('restaurant.store') }} " method="POST">
+                {{-- <form action="{{ route('restaurant.store') }} " method="POST">
                   @if (session('success'))
                   <div class="alert alert-success" id="success-message"  style="background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 10px; margin: 20px 0;">
                       {{ session('success') }}
@@ -119,6 +119,55 @@
                     </div>
 
                     <button type="submit">Inscrire</button>
+                </form> --}}
+
+                @if (session('error'))
+                <div class="alert alert-danger">
+                    {{-- <p>user</p> --}}
+                    {{ session('error') }}
+                </div>
+            @endif
+    
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+                <form action="{{ route('restaurant.store') }}" method="POST">
+                    @csrf
+                    @method('POST')
+                    <div class="form-group">
+                        <label for="nom_restaurant">Nom du restaurant</label>
+                        <input type="text" id="nom_restaurant" name="nom_restaurant" placeholder="Nom du restaurant" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="adresse_restaurant">Adresse du restaurant</label>
+                        <input type="text" id="adresse_restaurant" name="adresse_restaurant" placeholder="Adresse (Map)" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="numero_telephone">Numéro de téléphone</label>
+                        <input type="text" id="numero_telephone" name="numero_telephone" placeholder="Numéro de téléphone" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="email_restaurant">Email du restaurant</label>
+                        <input type="email" id="email_restaurant" name="email_restaurant" placeholder="Email du restaurant" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="nom_proprietaire">Nom du propriétaire</label>
+                        <input type="text" id="nom_proprietaire" name="nom_proprietaire" placeholder="Nom du propriétaire" required>
+                    </div>
+                    <div class="form-group">
+
+                        {{-- <input type="hidden" name="admin_id" value="{{ $adminId }}"> --}}
+
+                    </div>
+        
+                    <button type="submit" class="btn">Créer le Restaurant</button>
                 </form>
 
             </div>

@@ -11,13 +11,11 @@ class Restaurant extends Model
 
     protected $fillable = [
         'nom_restaurant',
-        'adresse_restaurant',
-        'nom',
-        'prenom',
-        'adresse',
+        'adresse_maps',
         'numero_telephone',
-        'identifiant_de_connexion',
-        'mot_de_passe'
+        'email',
+        'nom_proprietaire',
+        'user_id',
     ];
 
 

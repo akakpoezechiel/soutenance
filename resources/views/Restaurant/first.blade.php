@@ -52,7 +52,8 @@
                         <a href=""> l'application</a>
                     </button>
                     <button class="connexion"><a href="{{ route('authentication') }}">Connexion</a></button>
-                    <a href="/admin"><img src="./image/setting-removebg-preview.png" alt=""; style="height: 20px; width: 20px;" >
+                    <a href="/admin"><img src="./image/setting-removebg-preview.png" alt="";
+                            style="height: 20px; width: 20px;">
                     </a>
                 </div>
             </div>
@@ -190,41 +191,24 @@
             </div>
 
 
-            //export
-            
-            {{-- @foreach ($products as $product)
-            <div class="box">
-                <p class="date"> {{ $product->price }} <i>fcfa</i> </p>
-                <div class="img-box">
-                    {{-- <img src="./image/salad-with-salad-with-eggs-cucumber-cucumber_1034052-104252.Avif" alt=""> --}}
-                    {{-- <img src="{{ asset('db/' . $product->image) }}" alt="{{ $product->nom }} style " />
+         
 
-                </div> --}} --
-                {{-- <div class="detail">
-                    <h1>{!! $product->name !!} <br><span><h4>{!! $product->short_description !!}</h4></span></h1>
-                    <p>
-                        <h4>{!! $product->long_description !!}</h4>
+           
 
-                    </p>
-                    <a href="#shop" class="btn">Passer la commande</a>
-                </div>
-            </div>
-            @endforeach --}}
-
-            //export
+          
 
             <!-- Pagination (optionnel si tu as configuré la pagination dans Swiper) -->
             <div class="swiper-pagination"></div>
-            {{-- </div> --}}
+        </div>
 
 
 
 
 
-            <a href="{{ route('menu') }}"><button
-                    style="margin-top: 3%; background-color:rgba(4, 87, 60, 0.948) ;width: 180px; height: 45px; color: white; border-raduis: 5px; font-size:1.2rem">voir
-                    plus</button></a>
-            <!-- </div> -->
+        <a href="{{ route('menu') }}"><button
+                style="margin-top: 3%; background-color:rgba(4, 87, 60, 0.948) ;width: 180px; height: 45px; color: white; border-raduis: 5px; font-size:1.2rem">voir
+                plus</button></a>
+        <!-- </div> -->
         </div>
     </section>
     <section class="first">
