@@ -1,6 +1,6 @@
 <div class="side-bar">
     <a href="" class="brand-logo-text">
-        RESTAURANT AKEZY
+        {{ ( $restaurante->nom_restaurant ) }}
     </a>
     <br /><br /><br />
 

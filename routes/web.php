@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/publicit', [publicitController::class, 'index'])->name('publicit');
 
-    Route::get('/home', [MainController::class, 'home'])->name('home');
+    Route::get('/home/{restaurant}', [MainController::class, 'home'])->name('home');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/restaurant/sign_up', [SignRestoController::class, 'store'])->name('restaurant.store');
     
     Route::get('/restaurant/sign_up', [SignRestoController::class, 'success']);
+    Route::get('/restaurant/name', [SignRestoController::class, 'success']);
     //pour créer des restaurants
     Route::get('/signup', [SignRestoController::class, 'index'])->name('signup');
 
